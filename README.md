@@ -1,5 +1,7 @@
 # webpack-h5-starter
 
+![webpack](https://img.shields.io/npm/v/webpack.svg?label=webpack&style=flat-square&maxAge=3600)
+
 这是一个为了方便使用webpack开发前端应用准备的初始化配置项目，分为基于babel的babel-polyfill版本和transform-runtime版本。
 
 - babel-polyfill版本适用于应用开发。它会添加相应变量到全局，所以会污染全局变量。
