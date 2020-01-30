@@ -1,8 +1,8 @@
 {
-  "name": "epidemic",
+  "name": "webpack-h5-starter",
   "sideEffects": false,
   "version": "1.0.0",
-  "description": "epidemic data for wuhan",
+  "description": "frontend developer use webpack tool quick start.",
   "private": true,
   "scripts": {
     "build:pro": "webpack --config ./webpack.pro.config.js --mode production --env.NODE_ENV=production",
@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
-    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.4.2",
