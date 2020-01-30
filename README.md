@@ -4,11 +4,13 @@
 
 - babel-polyfill版本适用于应用开发。它会添加相应变量到全局，所以会污染全局变量。
 - transform-runtime版本适用于框架开发。它不会污染全局变量。
+- master会以transform-runtime版本开发。
 
 ## 使用方法
 
-1. 安装包：npm install
-2. 调试开发(webpack-dev-server启动)：npm run dev
-3. 打包发布：
+1. 选择TR(transform-runtime)版本或BP(babel-polyfill)版本下载
+2. 安装包执行：npm install
+3. 调试开发(webpack-dev-server启动)执行：npm run dev
+4. 打包发布执行：
    - 测试：用dev配置打包 npm run build:dev
    - 上线：用pro配置打包 npm run build:pro
