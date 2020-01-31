@@ -1,12 +1,13 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'js/[name].min.js'
+        filename: 'js/[name].[hash:8].js',
+        chunkFilename: 'js/[name].[hash:8].js',
+        publicPath: '/'
     },
     module: {
         rules: [
@@ -35,21 +36,11 @@ module.exports = {
                         limit: 8192
                     }
                 }
-            }, {
-                test: /\.css$/,
-                exclude: /node_modules/,
-                use: ExtractTextPlugin.extract({
-                    fallback: "style-loader",
-                    use: {
-                        loader: 'css-loader'
-                    },
-                })
             }
         ]
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new ExtractTextPlugin('styles/[name].min.css'),
         new HtmlWebpackPlugin({
             hash: true,
             chunks: ['vendors', 'commons', 'index'],
@@ -58,8 +49,9 @@ module.exports = {
         })
     ],
     optimization: {
+        usedExports: true,
         splitChunks: {
-            chunks: "all",
+            chunks: "initial",
             minSize: 30000,
             minChunks: 1,
             maxAsyncRequests: 5,
