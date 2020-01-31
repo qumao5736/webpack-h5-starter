@@ -52,9 +52,33 @@ module.exports = {
         new ExtractTextPlugin('styles/[name].min.css'),
         new HtmlWebpackPlugin({
             hash: true,
-            chunks: ['index'],
+            chunks: ['vendors', 'commons', 'index'],
             template: "./src/pages/index/index.html",
             filename: "pages/index/index.html"
         })
-    ]
+    ],
+    optimization: {
+        splitChunks: {
+            chunks: "all",
+            minSize: 30000,
+            minChunks: 1,
+            maxAsyncRequests: 5,
+            maxInitialRequests: 3,
+            automaticNameDelimiter: '~',
+            name: true,
+            cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10,
+                    name: 'vendors'
+                },
+                default: {
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true,
+                    name: 'commons'
+                }
+            }
+        }
+    }
 }

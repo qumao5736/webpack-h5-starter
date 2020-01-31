@@ -16,3 +16,7 @@
 4. 打包发布执行：
    - 测试：用dev配置打包 npm run build:dev
    - 上线：用pro配置打包 npm run build:pro
+
+## 更新日志
+
+- 2020-01-31 增加 SplitChunksPlugin 插件，并引入常用的Lodash工具库。
