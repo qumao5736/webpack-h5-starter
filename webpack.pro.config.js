@@ -23,12 +23,14 @@ const prodConfig = {
         ]
     },
     output: {
-        publicPath: "https://cache1.hosvr.cn",
+        publicPath: "https://cache1.hosvr.cn/test/",    //结尾的斜杠不可删除,否则css文件里拼接的图片url错误
+        filename: 'js/[name].[contenthash:8].js',
+        chunkFilename: 'js/[name].[contenthash:8].js'
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'styles/[name].[hash:8].css',
-            chunkFilename: 'styles/[name].[hash:8].css'
+            filename: 'styles/[name].[contenthash:8].css',
+            chunkFilename: 'styles/[name].[contenthash:8].css'
         })
     ],
     optimization: {

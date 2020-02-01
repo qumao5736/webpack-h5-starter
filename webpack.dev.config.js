@@ -27,9 +27,14 @@ const devConfig = {
             }
         ]
     },
+    output: {
+        filename: 'js/[name].js',
+        chunkFilename: 'js/[name].js',
+        publicPath: '/'
+    },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin('styles/[name].[hash:8].css'),
+        new ExtractTextPlugin('styles/[name].css'),
     ]
 }
 

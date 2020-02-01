@@ -5,3 +5,9 @@
     margin: 0 auto;
     text-align: center;
 }
+.bg {
+    width: 60px;
+    height: 60px;
+    background-image: url(../images/logo.png);
+    background-size: 100% 100%;
+}

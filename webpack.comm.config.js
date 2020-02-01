@@ -1,13 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'js/[name].[hash:8].js',
-        chunkFilename: 'js/[name].[hash:8].js',
-        publicPath: '/'
+        path: path.resolve(__dirname, 'dist')
     },
     module: {
         rules: [
@@ -36,16 +34,31 @@ module.exports = {
                         limit: 8192
                     }
                 }
+            }, {
+                test: /\.html$/,
+                use: {
+                    loader: 'html-loader'
+                }
             }
         ]
     },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            hash: true,
+            hash: false,
             chunks: ['vendors', 'commons', 'index'],
-            template: "./src/pages/index/index.html",
-            filename: "pages/index/index.html"
+            favicon: './src/favicon.ico',
+            template: './src/pages/index/index.html',
+            filename: 'pages/index/index.html',
+            inject: 'body',
+            minify: {
+                removeComments: true,
+                collapseWhitespace: false
+            }
+        }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            _: 'lodash'
         })
     ],
     optimization: {
